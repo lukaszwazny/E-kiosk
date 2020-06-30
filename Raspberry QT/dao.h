@@ -53,6 +53,12 @@ public:
     void add_subscription(int subscription_type);
     bool is_subscription_active();
     void add_photo();
+
+    void update_user_username(std::string username);
+    void update_user_email(std::string email);
+    void update_user_name(std::string name);
+    void update_user_surname(std::string surname);
+
     friend std::ostream& operator<<(std::ostream& os, const UserDAO& user);
 };
 

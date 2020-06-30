@@ -38,6 +38,75 @@ void UserDAO::add_subscription(int subscription_type)
     }
 }
 
+void update_user_username(std::string username)
+{
+    try {
+        auto* prepared_statement = connection->prepareStatement(
+                "UPDATE subscriptions SET username = ? WHERE id = ?"
+        );
+        prepared_statement->setInt(1, username);
+        prepared_statement->setInt(2, id);
+        prepared_statement->executeUpdate();
+        delete prepared_statement;
+    }
+    catch (const sql::SQLException& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+void update_user_email(std::string email)
+{
+    try {
+        auto* prepared_statement = connection->prepareStatement(
+        "UPDATE subscriptions SET email = ? WHERE id = ?"
+        );
+        prepared_statement->setInt(1, email);
+        prepared_statement->setInt(2, id);
+        prepared_statement->executeUpdate();
+        delete prepared_statement;
+    }
+    catch (const sql::SQLException& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+void update_user_name(std::string name)
+{
+    try {
+        auto* prepared_statement = connection->prepareStatement(
+                "UPDATE subscriptions SET name = ? WHERE id = ?"
+        );
+        prepared_statement->setInt(1, name);
+        prepared_statement->setInt(2, id);
+        prepared_statement->executeUpdate();
+        delete prepared_statement;
+    }
+    catch (const sql::SQLException& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+void update_user_surname(std::string surname)
+{
+    try {
+        auto* prepared_statement = connection->prepareStatement(
+                "UPDATE subscriptions SET surname = ? WHERE id = ?"
+        );
+        prepared_statement->setInt(1, surname);
+        prepared_statement->setInt(2, id);
+        prepared_statement->executeUpdate();
+        delete prepared_statement;
+    }
+    catch (const sql::SQLException& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+
 bool UserDAO::is_subscription_active()
 {
 
@@ -129,6 +198,11 @@ bool KodokanDAO::add_user(std::string login, std::string email, std::string name
     {
         std::cout << e.what() << std::endl;
     }
+}
+
+void UserDAO::update_user(std::string login, std::string email, std::string name, std::string surname, std::string password, BLOB photo = nullptr)
+{
+
 }
 
 void KodokanDAO::list_users()
